@@ -156,7 +156,7 @@ header {
 
 #header-social {
     position: absolute;
-    right: 24px;
+    right: 0;
 }
 
 #header-social a {
@@ -200,9 +200,10 @@ a#nav-about {
     color: #CC0200;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 848px) {
     #header-social {
         top: -24px;
+        right: 24px;
     }
 
     header h1 {
@@ -211,5 +212,27 @@ a#nav-about {
 
     nav a {
         font-size: 24px;
+    }
+}
+
+/* Footer */
+
+footer {
+    max-width: 800px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    margin: auto;
+}
+
+footer a {
+    font-size: 36px;
+    line-height: 1;
+    margin-right: 32px;
+    color: #CCC;
+}
+
+@media only screen and (max-width: 848px) {
+    footer {
+        padding-left: 16px;
     }
 }
