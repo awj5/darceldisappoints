@@ -1,3 +1,7 @@
+/* Import */
+
+@import url("blog.css");
+
 /* Fonts */
 
 @font-face {
@@ -135,13 +139,32 @@ button {
     clear: both;
 }
 
+section {
+    max-width: 800px;
+    margin: auto;
+}
+
 /* Header */
 
 header {
-    max-width: 768px;
+    max-width: 800px;
     margin: auto;
     text-align: center;
     margin-top: 48px;
+    position: relative;
+}
+
+#header-social {
+    position: absolute;
+    right: 24px;
+}
+
+#header-social a {
+    margin-left: 12px;
+}
+
+#header-social img {
+    height: 24px;
 }
 
 header img {
@@ -151,12 +174,12 @@ header img {
 header h1 {
     line-height: 1;
     margin-top: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
 }
 
 nav a {
     font-size: 36px;
-    line-height: 1;
+    line-height: 1.25;
     margin-left: 8px;
     margin-right: 8px;
 }
@@ -175,4 +198,18 @@ a#nav-projects {
 
 a#nav-about {
     color: #CC0200;
+}
+
+@media only screen and (max-width: 768px) {
+    #header-social {
+        top: -24px;
+    }
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    nav a {
+        font-size: 24px;
+    }
 }
