@@ -27,28 +27,36 @@ https://github.com/awj5
             <h1>Darcel Disappoints!</h1>
 
             <nav>
-                <a href="" id="nav-blog">Blog</a><a href="https://shop.darceldisappoints.com/" target="_blank" id="nav-shop">Shop</a><a href="" id="nav-projects">Projects &amp; Exhibitions</a><a href="" id="nav-about">About</a>
+                <a href="javascript: navClick('.');" id="nav-blog">Blog</a><a href="https://shop.darceldisappoints.com/" target="_blank" id="nav-shop">Shop</a><a href="javascript: navClick('.');" id="nav-projects">Projects &amp; Exhibitions</a><a href="javascript: navClick('about');" id="nav-about">About</a>
             </nav>
         </header>
 
         <!-- Sections -->
-        <section id="section-blog">
-            <article>
-                <hgroup>
-                    <h3>January 28</h3>
-                    <h2>Life</h2>
-                </hgroup>
+        <section id="section-home">
+            <template id="blog-post">
+                <article>
+                    <hgroup>
+                        <h3></h3>
+                        <h2></h2>
+                    </hgroup>
 
-                <img src="https://64.media.tumblr.com/71dde25417afe0febc1b8c624f9be3c8/c1811c88c1dc91df-59/s1280x1920/924e3453b5d6c73890821e08ed522ecde2fa1957.png" alt="" />
-            </article>
+                    <img src="" alt="" />
+                </article>
+            </template>
+
+            <div id="home-blog"></div>
+
+            <footer>
+                <a href="">Newer</a><a href="">Older</a>
+            </footer>
         </section>
 
-        <!-- Footer -->
-        <footer>
-            <a href="">Newer</a><a href="">Older</a>
-        </footer>
+        <section id="section-about">
+            <p>Test</p>
+        </section>
 
         <!-- JS -->
+        <script src="assets/js/plugins/pattern.min.js"></script>
         <script src="assets/js/global.js"></script>
         <script src="assets/js/blog.js"></script>
     </body>

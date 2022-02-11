@@ -23,8 +23,27 @@ article img {
     width: 100%;
 }
 
+/* Footer */
+
+footer {
+    padding-top: 32px;
+    padding-bottom: 32px;
+    display: none;
+}
+
+footer a {
+    font-size: 36px;
+    line-height: 1;
+    margin-right: 32px;
+    color: #CCC;
+}
+
 @media only screen and (max-width: 848px) {
     article hgroup {
+        padding-left: 16px;
+    }
+
+    footer {
         padding-left: 16px;
     }
 }

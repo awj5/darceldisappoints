@@ -3,6 +3,7 @@
 /* Global vars */
 
 window.touchScreen = false;
+window.prismicMasterRef;
 
 /* On DOM load */
 
@@ -35,6 +36,58 @@ function setEventsGlobal() {}
 
 /* Start */
 
-function start() {}
+async function start() {
+    // Prismic
+    const json = await getData('https://darceldisappointscom.prismic.io/api/v2'); // Get master ref
+    window.prismicMasterRef = json.refs[0].ref;
+
+    // Pattern
+    let patrn = new Pattern();
+    patrn.init();
+}
 
 /* Global */
+
+async function getData(path) {
+    const data = await fetch(path, {
+        method: 'get'
+    })
+    .then((response) => {
+        return response.json();
+    }).catch((error) => {
+        console.log(error);
+    });
+
+    return data;
+}
+
+function patternChange() {
+    loadSection();
+}
+
+function loadSection() {
+    const sections = document.querySelectorAll('section');
+
+    // Reset
+    for (let x = 0; x < sections.length; x++) {
+        sections[x].style.display = '';
+    }
+
+    const func = window[window.pattern];
+
+    // Call section function if exists
+    if (typeof func === 'function') {
+        func();
+    } else {
+        getPosts();
+    }
+
+    // Show selected
+    document.querySelector('#section-' + window.pattern).style.display = 'block';
+}
+
+/* Header */
+
+function navClick(section) {
+    history.pushState(null, null, section);
+}
