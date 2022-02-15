@@ -105,8 +105,8 @@ button {
 
 /* Animation */
 
-.fade-in-1 {
-    animation: fadeIn linear 1s forwards;
+.fade-in-35 {
+    animation: fadeIn ease-in .35s forwards;
 }
 
 .rotate-1 {

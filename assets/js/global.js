@@ -38,7 +38,7 @@ function setEventsGlobal() {}
 
 async function start() {
     // Prismic
-    const json = await getData('https://darceldisappointscom.prismic.io/api/v2'); // Get master ref
+    const json = await getData('https://darceldisappointscom.prismic.io/api/v2', undefined); // Get master ref
     window.prismicMasterRef = json.refs[0].ref;
 
     // Pattern
@@ -48,9 +48,10 @@ async function start() {
 
 /* Global */
 
-async function getData(path) {
+async function getData(path, signal) {
     const data = await fetch(path, {
-        method: 'get'
+        method: 'get',
+        signal: signal
     })
     .then((response) => {
         return response.json();
@@ -79,6 +80,8 @@ function loadSection() {
     if (typeof func === 'function') {
         func();
     } else {
+        // Blog page or post
+        window.pattern = 'home';
         getPosts();
     }
 
@@ -90,4 +93,10 @@ function loadSection() {
 
 function navClick(section) {
     history.pushState(null, null, section);
+}
+
+/* About */
+
+function about() {
+
 }

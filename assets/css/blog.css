@@ -28,7 +28,6 @@ article img {
 footer {
     padding-top: 32px;
     padding-bottom: 32px;
-    display: none;
 }
 
 footer a {
@@ -36,6 +35,7 @@ footer a {
     line-height: 1;
     margin-right: 32px;
     color: #CCC;
+    display: none;
 }
 
 @media only screen and (max-width: 848px) {
