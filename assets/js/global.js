@@ -74,6 +74,7 @@ function loadSection() {
         sections[x].style.display = '';
     }
 
+    var section = window.pattern;
     const func = window[window.pattern];
 
     // Call section function if exists
@@ -81,12 +82,17 @@ function loadSection() {
         func();
     } else {
         // Blog page or post
-        window.pattern = 'home';
+        if (window.id) {
+            // Is post
+            window.pattern = 'home';
+        }
+
+        section = 'home';
         getPosts();
     }
 
     // Show selected
-    document.querySelector('#section-' + window.pattern).style.display = 'block';
+    document.querySelector('#section-' + section).style.display = 'block';
 }
 
 /* Header */

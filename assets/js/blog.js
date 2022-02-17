@@ -4,7 +4,7 @@
 
 window.blogPage = 1;
 window.blogPosts = [];
-window.blogPostCount = 5;
+window.blogPostCount = 10;
 window.blogTotalPosts = 0;
 window.blogCallDate;
 window.blogController = new AbortController();
@@ -29,8 +29,15 @@ async function getPosts() {
     window.blogController = new AbortController();
     window.blogSignal = window.blogController.signal;
 
+    var q = '';
+
+    if (window.pattern !== 'home') {
+        // Tag
+        q = `&q=[[at(document.tags,["${ window.pattern }"])]]`;
+    }
+
     // Call API and set array
-    const apiQuery = window.id ? `https://darceldisappointscom.prismic.io/api/v2/documents/search?ref=${ window.prismicMasterRef }&q=[[at(document.id,"${ window.id }")]]` : `https://darceldisappointscom.prismic.io/api/v2/documents/search?ref=${ window.prismicMasterRef }&pageSize=${ window.blogPostCount }&page=${ window.blogPage }&orderings=[my.blog_post.date desc]`; // Page or post
+    const apiQuery = window.id ? `https://darceldisappointscom.prismic.io/api/v2/documents/search?ref=${ window.prismicMasterRef }&q=[[at(document.id,"${ window.id }")]]` : `https://darceldisappointscom.prismic.io/api/v2/documents/search?ref=${ window.prismicMasterRef }&pageSize=${ window.blogPostCount }&page=${ window.blogPage }${ q }&orderings=[my.blog_post.date desc]`; // Page or post
     const json = await getData(apiQuery, window.blogSignal);
     window.blogPosts = json.results;
     window.blogTotalPosts = json.total_results_size;
@@ -91,15 +98,15 @@ function setBlogFooter() {
 
 function nextPage() {
     window.blogPage++;
-    history.pushState(null, null, './?p=' + window.blogPage);
+    history.pushState(null, null, `./${ window.pattern !== 'home' ? window.pattern : ''}?p=${ window.blogPage }`);
 }
 
 function prevPage() {
     window.blogPage--;
-    var params = './?p=' + window.blogPage;
+    var params = `./${ window.pattern !== 'home' ? window.pattern : ''}?p=${ window.blogPage }`;
 
     if (window.blogPage === 1) {
-        params = '.'; // Home
+        params = window.pattern !== 'home' ? window.pattern : '.'; // Home or tag
     }
 
     history.pushState(null, null, params);
