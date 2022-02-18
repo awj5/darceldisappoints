@@ -75,7 +75,7 @@ function loadSection() {
     }
 
     var section = window.pattern;
-    const func = window[window.pattern];
+    const func = window[section];
 
     // Call section function if exists
     if (typeof func === 'function') {
@@ -87,12 +87,12 @@ function loadSection() {
             window.pattern = 'home';
         }
 
-        section = 'home';
         getPosts();
+        section = 'home';
     }
 
-    // Show selected
-    document.querySelector('#section-' + section).style.display = 'block';
+    document.querySelector('#section-' + section).style.display = 'block'; // Show selected
+    document.querySelector('html').style.backgroundColor = section === 'about' ? '#FC0' : ''; // Set bg color
 }
 
 /* Header */

@@ -14,11 +14,12 @@
 html {
     visibility: hidden; /* Hack to avoid FOUC */
     background-color: #FFF;
+    transition: background-color 0.35s linear;
 }
 
 body {
     font-family: "itc-avant-garde-gothic-lt-bold", sans-serif;
-    font-size: 14px;
+    font-size: 36px;
     color: #000;
     line-height: 0;
     margin: 0;
@@ -34,14 +35,16 @@ h5,
 h6 {
     font-size: 36px;
     margin: 0;
-    line-height: 1.25;
+    line-height: 1.15;
     font-weight: normal;
+    letter-spacing: -1px;
 }
 
 p {
     margin: 0;
-    line-height: 1.5;
+    line-height: 1.15;
     overflow-wrap: break-word;
+    letter-spacing: -1px;
 }
 
 a {
@@ -179,10 +182,10 @@ header h1 {
 }
 
 nav a {
-    font-size: 36px;
-    line-height: 1.25;
+    line-height: 1.15;
     margin-left: 8px;
     margin-right: 8px;
+    letter-spacing: -1px;
 }
 
 a#nav-blog {
@@ -212,6 +215,65 @@ a#nav-about {
     }
 
     nav a {
-        font-size: 24px;
+        font-size: 30px;
+    }
+}
+
+/* About */
+
+section#section-about {
+    padding-bottom: 64px;
+    text-align: center;
+}
+
+section#section-about p,
+section#section-about img {
+    float: left;
+    margin-top: 48px;
+}
+
+section#section-about p {
+    width: calc(100% - 240px);
+    padding-right: 32px;
+    box-sizing: border-box;
+    color: #FFF;
+    text-align: left;
+}
+
+a#about-email {
+    word-break: break-all;
+}
+
+a#about-ig {
+    color: #996633;
+}
+
+a#about-twitter {
+    color: #67CCCC;
+}
+
+a#about-article-1 {
+    color: #669933;
+}
+
+a#about-article-2 {
+    color: #FF6600;
+}
+
+section#section-about img {
+    width: 240px;
+}
+
+@media only screen and (max-width: 848px) {
+    section#section-about p,
+    section#section-about img {
+        float: none;
+    }
+
+    section#section-about p {
+        width: auto;
+        padding-left: 16px;
+        padding-right: 16px;
+        font-size: 30px;
     }
 }
