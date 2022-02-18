@@ -56,6 +56,7 @@ footer a {
 @media only screen and (max-width: 848px) {
     footer {
         padding-left: 16px;
+        padding-bottom: 96px;
     }
 
     footer a {
