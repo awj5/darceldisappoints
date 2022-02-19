@@ -51,23 +51,35 @@ function loadPost(count, callDate) {
     const postDate = new Date(postData.data.date);
     post.querySelector('h3').textContent = `${ postDate.toLocaleString('default', { month: 'long' }) } ${ postDate.toLocaleString('default', { day: 'numeric' }) }, ${ postDate.toLocaleString('default', { year: 'numeric' }) }`;
     post.querySelector('h2').textContent = postData.data.title[0].text;
-    const imageSize = window.innerWidth >= 768 ? 1600 : 800; // Smaller res for mobile
-    post.querySelector('img').src = postData.data.image.url + '&w=' + imageSize;
     const clone = document.importNode(post, true);
+
+    // Images
+    const imageSize = window.innerWidth >= 768 ? 1600 : 800; // Smaller res for mobile
+    const images = postData.data.gallery;
+    const postImages = clone.querySelector('.post-images');
+
+    for (let x = 0; x < images.length; x++) {
+        postImages.innerHTML += `<img src="${ images[x].gallery_image.url + '&w=' + imageSize }" alt="" />`; // Insert
+
+        // Add text if exists
+        if (images[x].gallery_text.length > 0 && images[x].gallery_text[0].text) {
+            postImages.innerHTML += `<p>${ images[x].gallery_text[0].text }</p>`; // Insert
+        }
+    }
 
     // Click
     if (!window.id) {
         // Is page not post
-        const article = clone.querySelector('article');
-        article.style.cursor = 'pointer';
+        const articleHeading = clone.querySelector('article hgroup');
+        articleHeading.style.cursor = 'pointer';
 
-        article.addEventListener('click', (e) => {
+        articleHeading.addEventListener('click', (e) => {
             history.pushState(null, null, postData.slugs[0] + '?id=' + postData.id);
         });
     }
 
-    // Preload image
-    clone.querySelector('img').onload = () => {
+    // Preload first image
+    clone.querySelectorAll('img')[0].onload = () => {
         if (callDate === window.blogCallDate) {
             // Page has not changed
             document.querySelector('#home-blog').appendChild(clone); // Add to DOM

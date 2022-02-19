@@ -1,7 +1,11 @@
 /* Blog */
 
+#home-blog {
+    padding-top: 24px;
+}
+
 article {
-    margin-top: 48px;
+    margin-top: 24px;
 }
 
 article hgroup {
@@ -17,11 +21,22 @@ article h3 {
     line-height: 1;
     font-size: 18px;
     margin-bottom: 4px;
-    letter-spacing: 0px;
+    letter-spacing: -0.25px;
 }
 
 article img {
     width: 100%;
+    margin-bottom: 24px;
+}
+
+article p {
+    margin-bottom: 24px;
+    font-size: 24px;
+    letter-spacing: -1px;
+}
+
+article p a {
+    text-decoration: underline;
 }
 
 @media only screen and (max-width: 848px) {
@@ -41,7 +56,7 @@ article img {
 /* Footer */
 
 footer {
-    padding-top: 32px;
+    padding-top: 8px;
     padding-bottom: 32px;
 }
 
@@ -50,7 +65,7 @@ footer a {
     margin-right: 32px;
     color: #CCC;
     display: none;
-    letter-spacing: -1px;
+    letter-spacing: -1.25px;
 }
 
 @media only screen and (max-width: 848px) {
