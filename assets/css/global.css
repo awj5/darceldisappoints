@@ -158,6 +158,10 @@ header {
     position: relative;
 }
 
+a#header-logo {
+    text-decoration: none;
+}
+
 #header-social {
     position: absolute;
     right: 0;
