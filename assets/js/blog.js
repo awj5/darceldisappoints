@@ -59,7 +59,14 @@ function loadPost(count, callDate) {
     const postImages = clone.querySelector('.post-images');
 
     for (let x = 0; x < images.length; x++) {
-        postImages.innerHTML += `<img src="${ images[x].gallery_image.url + '&w=' + imageSize }" alt="" />`; // Insert
+        // Insert
+        if (images[x].gallery_video.html) {
+            // Video
+            postImages.innerHTML += images[x].gallery_video.html;
+        } else {
+            // Image
+            postImages.innerHTML += `<img src="${ images[x].gallery_image.url + '&w=' + imageSize }" alt="" />`;
+        }
 
         // Add text if exists
         if (images[x].gallery_text.length > 0 && images[x].gallery_text[0].text) {
@@ -78,20 +85,32 @@ function loadPost(count, callDate) {
         });
     }
 
-    // Preload first image
-    clone.querySelectorAll('img')[0].onload = () => {
-        if (callDate === window.blogCallDate) {
-            // Page has not changed
-            document.querySelector('#home-blog').appendChild(clone); // Add to DOM
+    const cloneImages = clone.querySelectorAll('img');
 
-            if (window.blogPosts.length - 1 > count) {
-                // Next post
-                loadPost(count + 1, callDate);
-            } else {
-                // Show footer
-                setBlogFooter();
+    // Preload first image if exists
+    if (cloneImages.length > 0) {
+        // Image
+        cloneImages[0].onload = () => {
+            if (callDate === window.blogCallDate) {
+                // Page has not changed
+                nextBlogPost(clone, count, callDate);
             }
         }
+    } else {
+        // Video
+        nextBlogPost(clone, count, callDate);
+    }
+}
+
+function nextBlogPost(clone, count, callDate) {
+    document.querySelector('#home-blog').appendChild(clone); // Add to DOM
+
+    if (window.blogPosts.length - 1 > count) {
+        // Next post
+        loadPost(count + 1, callDate);
+    } else {
+        // Show footer
+        setBlogFooter();
     }
 }
 

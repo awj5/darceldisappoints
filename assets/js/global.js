@@ -91,6 +91,16 @@ function loadSection() {
         section = 'home';
     }
 
+    // Set nav
+    const navItems = document.querySelectorAll('nav a');
+
+    // Reset all nav items
+    for (let x = 0; x < navItems.length; x++) {
+        navItems[x].style.textDecoration = '';
+    }
+
+    document.querySelector('a#nav-' + window.pattern).style.textDecoration = 'underline'; // Set selected
+
     document.querySelector('#section-' + section).style.display = 'block'; // Show selected
     document.querySelector('html').style.backgroundColor = section === 'about' ? '#FC0' : ''; // Set bg color
 }

@@ -29,6 +29,10 @@ article img {
     margin-bottom: 24px;
 }
 
+article iframe {
+    margin-bottom: 24px;
+}
+
 article p {
     margin-bottom: 24px;
     font-size: 18px;
@@ -53,6 +57,17 @@ article p a {
     article h3,
     article p {
         font-size: 16px;
+    }
+
+    article iframe {
+        margin-left: 16px;
+    }
+}
+
+@media only screen and (max-width: 672px) {
+    article iframe {
+        width: 288px;
+        height: 191px;
     }
 }
 
