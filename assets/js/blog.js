@@ -65,7 +65,9 @@ function loadPost(count, callDate) {
             postImages.innerHTML += images[x].gallery_video.html;
         } else {
             // Image
-            postImages.innerHTML += `<img src="${ images[x].gallery_image.url + '&w=' + imageSize }" alt="" />`;
+            let galleryImage = images[x].gallery_image;
+            let format = galleryImage.dimensions.height > galleryImage.dimensions.width ? 'post-portrait' : ''; // Add portrait class if height larger than width
+            postImages.innerHTML += `<img src="${ galleryImage.url + '&w=' + imageSize }" alt="" class="${ format }" />`;
         }
 
         // Add text if exists
