@@ -74,8 +74,6 @@ function loadSection() {
         sections[x].style.display = '';
     }
 
-    setOG('https://www.darceldisappoints.com/', 'Hi! My name is Darcel Disappoints, I live in New York and my blog is about the highs and lows of life in a big city. For better or worse (usually worse).', 'https://darceldisappoints.com/assets/img/og.png');
-
     var section = window.pattern;
     const func = window[section];
 
@@ -105,15 +103,6 @@ function loadSection() {
 
     document.querySelector('#section-' + section).style.display = 'block'; // Show selected
     document.querySelector('html').style.backgroundColor = section === 'about' ? '#FC0' : ''; // Set bg color
-}
-
-function setOG(url, description, image) {
-    document.querySelector('meta[property="og:url"]').setAttribute('content', url);
-    document.querySelector('meta[property="og:description"]').setAttribute('content', description);
-    document.querySelector('meta[property="og:image"]').setAttribute('content', image);
-    document.querySelector('meta[property="twitter:url"]').setAttribute('content', url);
-    document.querySelector('meta[name="twitter:description"]').setAttribute('content', description);
-    document.querySelector('meta[name="twitter:image"]').setAttribute('content', image);
 }
 
 /* Header */
