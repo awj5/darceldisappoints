@@ -85,6 +85,9 @@ function loadPost(count, callDate) {
         articleHeading.addEventListener('click', (e) => {
             history.pushState(null, null, postData.slugs[0] + '?id=' + postData.id);
         });
+    } else {
+        // Is post
+        setOG('https://www.darceldisappoints.com/' + postData.slugs[0] + '?id=' + postData.id, postData.data.title[0].text, images[0].gallery_image.url);
     }
 
     const cloneImages = clone.querySelectorAll('img');
