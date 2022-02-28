@@ -87,7 +87,7 @@ function loadPost(count, callDate) {
         });
     } else {
         // Is post
-        setOG('https://www.darceldisappoints.com/' + postData.slugs[0] + '?id=' + postData.id, postData.data.title[0].text, images[0].gallery_image.url);
+        setOG('https://www.darceldisappoints.com/' + postData.slugs[0] + '?id=' + postData.id, postData.data.title[0].text, images[0].gallery_image.url + '&w=' + imageSize);
     }
 
     const cloneImages = clone.querySelectorAll('img');
