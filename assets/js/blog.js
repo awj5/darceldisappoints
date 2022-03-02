@@ -83,7 +83,7 @@ function loadPost(count, callDate) {
         articleHeading.style.cursor = 'pointer';
 
         articleHeading.addEventListener('click', (e) => {
-            history.pushState(null, null, postData.slugs[0] + '?id=' + postData.id);
+            history.pushState(null, null, postData.slugs[0].replace('.', '') + '?id=' + postData.id);
         });
     }
 
