@@ -11,6 +11,9 @@ window.blogCallDate;
 /* Blog */
 
 async function getPosts() {
+    window.blogCallDate = Date.now(); // Use as call ID
+    const callDate = window.blogCallDate;
+
     // Reset
     document.querySelector('#home-blog').innerHTML = '';
     const footerLinks = document.querySelectorAll('footer a');
@@ -20,8 +23,6 @@ async function getPosts() {
     }
 
     window.blogPage = window.p ? window.p : 1; // Set page no.
-    window.blogCallDate = Date.now(); // Use as call ID
-    const callDate = window.blogCallDate;
     var q = '';
 
     if (window.pattern !== 'home') {
