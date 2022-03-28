@@ -90,10 +90,10 @@ function loadPost(count, callDate) {
     if (cloneImages.length > 0) {
         // Image
         cloneImages[0].onload = () => {
-            if (callDate === window.blogCallDate) {
+            //if (callDate === window.blogCallDate) {
                 // Page has not changed
                 nextBlogPost(clone, count, callDate);
-            }
+            //}
         }
     } else {
         // Video
