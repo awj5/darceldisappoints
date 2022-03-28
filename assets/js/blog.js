@@ -7,8 +7,6 @@ window.blogPosts = [];
 window.blogPostCount = 10;
 window.blogTotalPosts = 0;
 window.blogCallDate;
-window.blogController = new AbortController();
-window.blogSignal = window.blogController.signal;
 
 /* Blog */
 
@@ -23,12 +21,7 @@ async function getPosts() {
 
     window.blogPage = window.p ? window.p : 1; // Set page no.
     window.blogCallDate = Date.now(); // Use as call ID
-
-    // Cancel previous fetch and reset controller
-    window.blogController.abort();
-    window.blogController = new AbortController();
-    window.blogSignal = window.blogController.signal;
-
+    const callDate = window.blogCallDate;
     var q = '';
 
     if (window.pattern !== 'home') {
@@ -38,10 +31,14 @@ async function getPosts() {
 
     // Call API and set array
     const apiQuery = window.id ? `https://darceldisappointscom.prismic.io/api/v2/documents/search?ref=${ window.prismicMasterRef }&q=[[at(document.id,"${ window.id }")]]` : `https://darceldisappointscom.prismic.io/api/v2/documents/search?ref=${ window.prismicMasterRef }&pageSize=${ window.blogPostCount }&page=${ window.blogPage }${ q }&orderings=[my.blog_post.date desc]`; // Page or post
-    const json = await getData(apiQuery, window.blogSignal);
-    window.blogPosts = json.results;
-    window.blogTotalPosts = json.total_results_size;
-    loadPost(0, window.blogCallDate);
+    const json = await getData(apiQuery);
+
+    // If page hasn't changed
+    if (callDate === window.blogCallDate) {
+        window.blogPosts = json.results;
+        window.blogTotalPosts = json.total_results_size;
+        loadPost(0, callDate);
+    }
 }
 
 function loadPost(count, callDate) {

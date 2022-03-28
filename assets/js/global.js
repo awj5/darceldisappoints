@@ -38,7 +38,7 @@ function setEventsGlobal() {}
 
 async function start() {
     // Prismic
-    const json = await getData('https://darceldisappointscom.prismic.io/api/v2', undefined); // Get master ref
+    const json = await getData('https://darceldisappointscom.prismic.io/api/v2'); // Get master ref
     window.prismicMasterRef = json.refs[0].ref;
 
     // Pattern
@@ -48,10 +48,9 @@ async function start() {
 
 /* Global */
 
-async function getData(path, signal) {
+async function getData(path) {
     const data = await fetch(path, {
-        method: 'get',
-        signal: signal
+        method: 'get'
     })
     .then((response) => {
         return response.json();
