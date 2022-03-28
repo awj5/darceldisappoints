@@ -33,7 +33,7 @@ async function getPosts() {
     const apiQuery = window.id ? `https://darceldisappointscom.prismic.io/api/v2/documents/search?ref=${ window.prismicMasterRef }&q=[[at(document.id,"${ window.id }")]]` : `https://darceldisappointscom.prismic.io/api/v2/documents/search?ref=${ window.prismicMasterRef }&pageSize=${ window.blogPostCount }&page=${ window.blogPage }${ q }&orderings=[my.blog_post.date desc]`; // Page or post
     const json = await getData(apiQuery);
 
-    // If page hasn't changed
+    // Page hasn't changed
     if (callDate === window.blogCallDate) {
         window.blogPosts = json.results;
         window.blogTotalPosts = json.total_results_size;
@@ -90,10 +90,10 @@ function loadPost(count, callDate) {
     if (cloneImages.length > 0) {
         // Image
         cloneImages[0].onload = () => {
-            //if (callDate === window.blogCallDate) {
+            if (callDate === window.blogCallDate) {
                 // Page has not changed
                 nextBlogPost(clone, count, callDate);
-            //}
+            }
         }
     } else {
         // Video
