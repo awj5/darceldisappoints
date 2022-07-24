@@ -55,7 +55,12 @@ a {
     -webkit-user-select: none;
 }
 
-.no-touch a:hover,
+@media (hover: hover) {
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
 a:active {
     text-decoration: underline;
 }

@@ -8,12 +8,7 @@ window.prismicMasterRef;
 /* On DOM load */
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Detect mobile
-    window.addEventListener('touchstart', () => {
-        document.querySelector('body').classList.remove('no-touch');
-        window.touchScreen = ! window.touchScreen; // Toggle
-    });
-
+    window.touchScreen = matchMedia('(hover: none)').matches; // Detect mobile
     setEventsGlobal(); // Mouse and keyboard
 
     // Scroll
