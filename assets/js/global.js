@@ -61,7 +61,7 @@ function patternChange() {
 }
 
 function loadSection() {
-    const sections = document.querySelectorAll('section');
+    const sections = document.querySelectorAll('.section');
 
     // Reset
     for (let x = 0; x < sections.length; x++) {

@@ -148,7 +148,7 @@ button {
     clear: both;
 }
 
-section {
+.section {
     max-width: 800px;
     margin: auto;
     display: none;
@@ -231,18 +231,18 @@ a#nav-about {
 
 /* About */
 
-section#section-about {
+#section-about {
     padding-bottom: 64px;
     text-align: center;
 }
 
-section#section-about p,
-section#section-about img {
+#section-about p,
+#section-about img {
     float: left;
     margin-top: 48px;
 }
 
-section#section-about p {
+#section-about p {
     width: calc(100% - 240px);
     padding-right: 32px;
     box-sizing: border-box;
@@ -270,17 +270,17 @@ a#about-article-2 {
     color: #FF6600;
 }
 
-section#section-about img {
+#section-about img {
     width: 240px;
 }
 
 @media only screen and (max-width: 848px) {
-    section#section-about p,
-    section#section-about img {
+    #section-about p,
+    #section-about img {
         float: none;
     }
 
-    section#section-about p {
+    #section-about p {
         width: auto;
         padding-left: 16px;
         padding-right: 16px;
