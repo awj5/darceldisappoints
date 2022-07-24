@@ -80,7 +80,7 @@ function loadPost(count, callDate) {
         const articleHeading = clone.querySelector('article hgroup');
         articleHeading.style.cursor = 'pointer';
 
-        articleHeading.addEventListener('click', (e) => {
+        articleHeading.addEventListener('click', () => {
             history.pushState(null, null, postData.slugs[0].replace('.', '') + '?id=' + postData.id);
         });
     }
@@ -95,7 +95,7 @@ function loadPost(count, callDate) {
                 // Page has not changed
                 nextBlogPost(clone, count, callDate);
             }
-        }
+        };
     } else {
         // Video
         nextBlogPost(clone, count, callDate);
